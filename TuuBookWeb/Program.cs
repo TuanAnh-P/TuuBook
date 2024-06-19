@@ -1,4 +1,4 @@
-using TuuBookWeb.Data;
+using TuuBook.DataAccess.Data;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);

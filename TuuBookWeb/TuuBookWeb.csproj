@@ -15,4 +15,9 @@
     </PackageReference>
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\TuuBook.DataAccess\TuuBook.DataAccess.csproj" />
+    <ProjectReference Include="..\TuuBook.Models\TuuBook.Models.csproj" />
+  </ItemGroup>
+
 </Project>

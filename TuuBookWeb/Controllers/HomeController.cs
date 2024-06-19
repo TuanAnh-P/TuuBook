@@ -1,6 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
-using TuuBookWeb.Models;
+using TuuBook.Models;
 
 namespace TuuBookWeb.Controllers
 {

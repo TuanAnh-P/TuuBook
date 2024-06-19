@@ -1,7 +1,7 @@
-﻿using TuuBookWeb.Models;
+﻿using TuuBook.Models;
 using Microsoft.EntityFrameworkCore;
 
-namespace TuuBookWeb.Data
+namespace TuuBook.DataAccess.Data
 {
     public class ApplicationDbContext : DbContext
     {

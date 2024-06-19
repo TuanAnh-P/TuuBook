@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using TuuBookWeb.Data;
-using TuuBookWeb.Models;
+using TuuBook.DataAccess.Data;
+using TuuBook.Models;
 
 namespace TuuBookWeb.Controllers
 {

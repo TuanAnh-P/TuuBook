@@ -1,4 +1,4 @@
-namespace TuuBookWeb.Models
+namespace TuuBook.Models
 {
     public class ErrorViewModel
     {

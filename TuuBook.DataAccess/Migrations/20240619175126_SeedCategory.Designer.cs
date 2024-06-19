@@ -4,15 +4,15 @@ using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-using TuuBookWeb.Data;
+using TuuBook.DataAccess.Data;
 
 #nullable disable
 
-namespace TuuBookWeb.Migrations
+namespace TuuBook.DataAccess.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20240618202038_SeedCategoryTable")]
-    partial class SeedCategoryTable
+    [Migration("20240619175126_SeedCategory")]
+    partial class SeedCategory
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -24,7 +24,7 @@ namespace TuuBookWeb.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
 
-            modelBuilder.Entity("TuuBookWeb.Models.Category", b =>
+            modelBuilder.Entity("TuuBook.Models.Category", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
