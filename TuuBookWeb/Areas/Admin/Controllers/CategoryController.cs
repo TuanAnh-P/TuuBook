@@ -1,20 +1,22 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using TuuBook.DataAccess.Data;
+using TuuBook.DataAccess.Repository.IRepository;
 using TuuBook.Models;
 
-namespace TuuBookWeb.Controllers
+namespace TuuBookWeb.Areas.Admin.Controllers
 {
+    [Area("Admin")]
     public class CategoryController : Controller
     {
-        private readonly ApplicationDbContext _db;
-        public CategoryController(ApplicationDbContext db)
+        private readonly IUnitOfWork _unitOfWork;
+        public CategoryController(IUnitOfWork unitOfWork)
         {
-            _db = db;
+            _unitOfWork = unitOfWork;
         }
 
         public IActionResult Index()
         {
-            List<Category> objCategoryList = _db.Categories.ToList();
+            List<Category> objCategoryList = _unitOfWork.Category.GetAll().ToList();
             return View(objCategoryList);
         }
 
@@ -32,8 +34,8 @@ namespace TuuBookWeb.Controllers
 
             if (ModelState.IsValid)
             {
-                _db.Categories.Add(obj);
-                _db.SaveChanges();
+                _unitOfWork.Category.Add(obj);
+                _unitOfWork.Save();
                 TempData["success"] = "Category created successfully";
                 return RedirectToAction("Index");
             }
@@ -47,7 +49,7 @@ namespace TuuBookWeb.Controllers
             {
                 return NotFound();
             }
-            Category? categoryFromDb = _db.Categories.FirstOrDefault(u=>u.Id==id);
+            Category? categoryFromDb = _unitOfWork.Category.Get(u => u.Id == id);
 
             if (categoryFromDb == null)
             {
@@ -60,8 +62,8 @@ namespace TuuBookWeb.Controllers
         {
             if (ModelState.IsValid)
             {
-                _db.Categories.Update(obj);
-                _db.SaveChanges();
+                _unitOfWork.Category.Update(obj);
+                _unitOfWork.Save();
                 TempData["success"] = "Category updated successfully";
                 return RedirectToAction("Index");
             }
@@ -75,7 +77,7 @@ namespace TuuBookWeb.Controllers
             {
                 return NotFound();
             }
-            Category? categoryFromDb = _db.Categories.FirstOrDefault(u => u.Id == id);
+            Category? categoryFromDb = _unitOfWork.Category.Get(u => u.Id == id);
 
             if (categoryFromDb == null)
             {
@@ -86,13 +88,13 @@ namespace TuuBookWeb.Controllers
         [HttpPost, ActionName("Delete")]
         public IActionResult DeletePOST(int? id)
         {
-            Category? categoryFromDb = _db.Categories.FirstOrDefault(u => u.Id == id);
+            Category? categoryFromDb = _unitOfWork.Category.Get(u => u.Id == id);
             if (categoryFromDb == null)
             {
                 return NotFound();
             }
-            _db.Categories.Remove(categoryFromDb);
-            _db.SaveChanges();
+            _unitOfWork.Category.Remove(categoryFromDb);
+            _unitOfWork.Save();
             TempData["success"] = "Category deleted successfully";
             return RedirectToAction("Index");
         }
