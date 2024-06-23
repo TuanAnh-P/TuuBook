@@ -11,8 +11,8 @@ using TuuBook.DataAccess.Data;
 namespace TuuBook.DataAccess.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20240622183307_initial")]
-    partial class initial
+    [Migration("20240623005414_Initial")]
+    partial class Initial
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
